@@ -11,18 +11,18 @@ res.render('add-product', {
 };
 
 exports.postAddProduct = (req, res, next) => {
-    const product = new Product(req.body.title);
-    product.save();
+    const products = new Product(req.body.title);
+    products.save();
     res.redirect('/');
 };
 
 exports.getProducts = (req, res, next) => {
-    const product = Product.fetchAll();
+    const products = Product.fetchAll();
     res.render('shop', {
-      prods: product,
+      prods: products,
       pageTitle: 'Shop',
       path: '/',
-      hasProducts: product.length > 0,
+      hasProducts: products.length > 0,
       activeShop: true,
       productCSS: true
     });
